@@ -1,6 +1,5 @@
 // File: notifications_page.dart
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'notification_model.dart';
 
 class NotificationsPage extends StatelessWidget {
