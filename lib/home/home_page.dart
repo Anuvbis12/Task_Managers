@@ -32,8 +32,8 @@ class _HomePageState extends State<HomePage> {
   DateTime? _selectedDay;
   late List<TaskBase> _selectedEvents;
 
-  // --- POLYMORPHISM: Menggunakan List<TaskBase> untuk menampung berbagai jenis tugas ---
-  final List<TaskBase> _tasks = [
+  // --- POLYMORPHISM: FIX: Explicitly type the list to help the analyzer ---
+  final List<TaskBase> _tasks = <TaskBase>[
     Task(title: 'Determine meeting schedule', category: 'Development', date: DateTime.now(), description: 'System Analyst', duration: '28 Nov'),
     Task(title: 'Personal branding', category: 'Marketing', date: DateTime.now().add(const Duration(days: 1)), description: 'Marketing Team', duration: '28 Nov'),
     SimpleTask(title: 'Quick Standup Meeting', isCompleted: true), // Contoh SimpleTask
