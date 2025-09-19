@@ -4,7 +4,9 @@ import '../home/home_page.dart';
 import '../models/user_model.dart';
 
 // Database pengguna sementara (in-memory)
-final Map<String, User> _usersDatabase = {};
+final Map<String, User> _usersDatabase = {
+  'admin@gmail.com': User(fullName: 'Admin', email: 'admin@gmail.com', password: 'password')
+};
 
 class AuthScreen extends StatefulWidget {
   final VoidCallback toggleTheme;
@@ -26,6 +28,11 @@ class _AuthScreenState extends State<AuthScreen> {
   final _nameFocusNode = FocusNode();
   final _emailFocusNode = FocusNode();
   final _passwordFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -57,11 +64,12 @@ class _AuthScreenState extends State<AuthScreen> {
         // Ambil data pengguna yang berhasil login
         final loggedInUser = _usersDatabase[email]!;
 
-        // Navigasi ke HomePage dan teruskan nama pengguna
+        // Navigasi ke HomePage dan teruskan nama pengguna dan email
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (ctx) => HomePage(
               userName: loggedInUser.fullName,
+              userEmail: loggedInUser.email,
               toggleTheme: widget.toggleTheme,
             ),
           ),

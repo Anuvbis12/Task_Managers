@@ -22,7 +22,7 @@ class UserListPage extends StatelessWidget {
         // print("Error loading image: $e"); // Untuk debug
       }
     }
-    return null; // Kembalikan null jika path null, kosong, atau terjadi error
+    return null;
   }
 
   @override

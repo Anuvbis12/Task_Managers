@@ -14,8 +14,9 @@ import '../task/task_detail_page.dart';
 
 class HomePage extends StatefulWidget {
   final String userName;
+  final String userEmail;
   final VoidCallback toggleTheme;
-  const HomePage({super.key, required this.userName, required this.toggleTheme});
+  const HomePage({super.key, required this.userName, required this.userEmail, required this.toggleTheme});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _currentUser = User(fullName: widget.userName, email: "user@example.com", password: "password");
+    _currentUser = User(fullName: widget.userName, email: widget.userEmail, password: "password");
     _searchController.addListener(() => setState(() {}));
 
     final now = DateTime.now();
@@ -192,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                       style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                       overflow: TextOverflow.ellipsis,
                     ),
-                    Text('Project Manager', style: theme.textTheme.bodySmall),
+                    Text(_currentUser.email, style: theme.textTheme.bodySmall),
                   ]
               ),
             ),
@@ -322,7 +323,7 @@ class _HomePageState extends State<HomePage> {
             },
           ),
         ),
-        const SizedBox(height: 50),
+        const SizedBox(height: 30),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Row(

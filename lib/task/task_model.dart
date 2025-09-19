@@ -22,6 +22,10 @@ abstract class TaskBase {
   String get title => _title;
   bool get isCompleted => _isCompleted;
 
+  set isCompleted(bool value) {
+    _isCompleted = value;
+  }
+
   // Metode abstrak untuk polimorfisme
   String getDetails();
 
@@ -49,6 +53,7 @@ class Task extends TaskBase {
     TaskPriority priority = TaskPriority.Medium,
     double? orderIndex,
     String? id,
+    //setter
   }) : _description = description,
        _category = category,
        _date = date,
